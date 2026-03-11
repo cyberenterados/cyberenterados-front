@@ -1,11 +1,19 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-  purge: [],
-  darkMode: false, // or 'media' or 'class'
+  content: [
+    "./src/**/*.{js,jsx,ts,tsx}",
+  ],
   theme: {
-    extend: {},
-  },
-  variants: {
-    extend: {},
+    extend: {
+      colors: {
+        cyber: {
+          green: '#22c55e',
+          dark: '#050505',
+        }
+      }
+    },
   },
   plugins: [],
 }
+
+
