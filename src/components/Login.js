@@ -65,8 +65,10 @@ const Login = () => {
             </div>
           </div>
 
-          <button className="w-full py-4 bg-green-500 hover:bg-green-400 text-black font-black rounded-xl transition-all transform hover:-translate-y-1 active:scale-95 shadow-[0_10px_20px_rgba(34,197,94,0.3)]">
-            INICIAR SECUENCIA
+          <button 
+            type="submit" 
+            className="w-full glass-card py-3 rounded-xl font-bold hover:bg-green-500/20 transition-all"
+             >INICIAR SECUENCIA
           </button>
         </form>
 
