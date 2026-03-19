@@ -10,7 +10,7 @@ const Login = () => {
     e.preventDefault();
     try {
       // Conexión directa con Dorothy en el puerto 3000
-      const res = await axios.post('http://localhost:3000/api/auth/login', formData);
+      const res = await axios.post('http://192.168.1.62:3000/api/auth/login', formData);
       localStorage.setItem('token', res.data.token); 
       alert('✅ IDENTIDAD CONFIRMADA: BIENVENIDO AL BÚNKER');
     } catch (err) {
