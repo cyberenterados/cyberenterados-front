@@ -1,39 +1,39 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import api from '../api'; // 🛰️ La antena universal
+import { useNavigate } from 'react-router-dom'; // Para navegación automática
 import { ShieldCheck, Lock, Mail, Terminal } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: '', password: '' });
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate(); // 🚀 El motor de salto
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     
     try {
-      // 🚀 CONFIGURACIÓN DE RADAR: Apuntando al motor local de Marie
-      // Si el backend corre en el puerto 3000 de esta misma PC
-      const API_URL = 'http://localhost:3000/api/auth/login';
-
-      const res = await axios.post(API_URL, formData);
+      // 📡 Usamos la antena dinámica. Marie ya sabe que la base es /api/auth/login
+      const res = await api.post('/auth/login', formData);
       
-      // Guardamos el token de acceso en el búnker local
+      // Guardamos el token en el búnker local
       localStorage.setItem('token', res.data.token); 
       
-      console.log("📡 Conexión establecida con el núcleo de Marie");
-      alert('✅ IDENTIDAD CONFIRMADA: BIENVENIDO AL BÚNKER DE MARIE');
+      console.log("📡 IDENTIDAD CONFIRMADA: Accediendo al núcleo...");
       
-      // Opcional: Redirigir al inicio tras login exitoso
-      // window.location.href = '/noticias';
+      // 🚀 SALTO AUTOMÁTICO: Sin carteles molestos, directo al Feed o al panel
+      navigate('/'); 
 
     } catch (err) {
       console.error("❌ Fallo en la secuencia de acceso:", err.response?.data || err.message);
-      alert('❌ ERROR: ACCESO DENEGADO AL SISTEMA. Revisa tus credenciales.');
+      alert('❌ ERROR: CREDENCIALES INVÁLIDAS. Acceso denegado.');
     } finally {
       setLoading(false);
     }
   };
+
+  // ... (Todo tu código de RETURN se mantiene exactamente igual, está perfecto)
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-black overflow-hidden">
