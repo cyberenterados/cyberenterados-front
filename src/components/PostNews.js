@@ -1,48 +1,41 @@
 import React, { useState } from 'react';
-import api from '../api'; // 🛰️ Antena universal (asegúrate de que api.js esté en src/)
+import api from '../api';
 
 const PostNews = () => {
-    // 1. Definición de Estados (Los sensores)
     const [formData, setFormData] = useState({ titulo: '', contenido: '', categoria: 'General' });
     const [imagen, setImagen] = useState(null);
     const [loading, setLoading] = useState(false);
 
-    // 2. Manejador de texto (handleChange)
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    // 3. Manejador de archivos (handleFile)
     const handleFile = (e) => {
         setImagen(e.target.files[0]);
     };
 
-    // 4. Lógica de envío (handleSubmit)
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
 
         const data = new FormData();
-        data.append('titulo', formData.titulo);
-        data.append('contenido', formData.contenido);
-        data.append('categoria', formData.categoria);
-        data.append('imagen', imagen);
+        Object.keys(formData).forEach(key => data.append(key, formData[key]));
+        if (imagen) data.append('imagen', imagen);
 
         try {
             const token = localStorage.getItem('token');
-            const res = await api.post('/noticias/publicar', data, {
+            await api.post('/noticias/publicar', data, { // res eliminado
                 headers: { 
                     'Content-Type': 'multipart/form-data',
                     'Authorization': `Bearer ${token}` 
                 }
             });
-            alert("✅ REPORTE EN ÓRBITA EXITOSAMENTE");
-            // Limpiar formulario tras el éxito
+            alert("✅ REPORTE EN ÓRBITA");
             setFormData({ titulo: '', contenido: '', categoria: 'General' });
             setImagen(null);
         } catch (err) {
-            console.error("❌ FALLA EN EL LANZAMIENTO:", err);
-            alert("Error al conectar con el búnker de Marie.");
+            console.error("❌ Error de envío:", err);
+            alert("Error al conectar con el búnker.");
         } finally {
             setLoading(false);
         }
@@ -54,7 +47,7 @@ const PostNews = () => {
             <form onSubmit={handleSubmit} style={styles.form}>
                 <input 
                     name="titulo" 
-                    placeholder="TÍTULO DEL REPORTE" 
+                    placeholder="TÍTULO" 
                     onChange={handleChange} 
                     value={formData.titulo} 
                     required 
@@ -62,25 +55,24 @@ const PostNews = () => {
                 />
                 <textarea 
                     name="contenido" 
-                    placeholder="CONTENIDO TÁCTICO..." 
+                    placeholder="CONTENIDO..." 
                     onChange={handleChange} 
                     value={formData.contenido} 
                     required 
                     style={styles.textarea}
                 />
                 <div style={styles.fileBox}>
-                    <label style={styles.label}>SELECCIONAR IMAGEN DE SATÉLITE:</label>
+                    <label style={styles.label}>IMAGEN DE SATÉLITE:</label>
                     <input type="file" onChange={handleFile} required style={styles.fileInput}/>
                 </div>
                 <button type="submit" disabled={loading} style={styles.btn}>
-                    {loading ? 'ENVIANDO A LA NUBE...' : 'LANZAR NOTICIA 🚀'}
+                    {loading ? 'TRANSMITIENDO...' : 'LANZAR NOTICIA 🚀'}
                 </button>
             </form>
         </div>
     );
 };
 
-// 🎨 Estilos Estilo Terminal
 const styles = {
     container: { maxWidth: '600px', margin: '2rem auto', padding: '1rem' },
     title: { color: '#00ff41', fontFamily: 'monospace', marginBottom: '1rem' },
@@ -90,7 +82,7 @@ const styles = {
     fileBox: { display: 'flex', flexDirection: 'column', gap: '5px' },
     label: { color: '#888', fontSize: '0.8rem', fontWeight: 'bold' },
     fileInput: { color: '#888' },
-    btn: { background: '#00ff41', color: '#000', fontWeight: 'bold', padding: '15px', cursor: 'pointer', border: 'none', transition: '0.3s', textTransform: 'uppercase' }
+    btn: { background: '#00ff41', color: '#000', fontWeight: 'bold', padding: '15px', cursor: 'pointer', border: 'none', textTransform: 'uppercase' }
 };
 
 export default PostNews;

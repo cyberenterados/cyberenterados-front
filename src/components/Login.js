@@ -1,43 +1,33 @@
 import React, { useState } from 'react';
-import api from '../api'; // 🛰️ La antena universal
-import { useNavigate } from 'react-router-dom'; // Para navegación automática
-import { ShieldCheck, Lock, Mail, Terminal } from 'lucide-react';
+import api from '../api';
+import { useNavigate } from 'react-router-dom';
+import { Lock, Mail, Terminal } from 'lucide-react'; // ShieldCheck eliminado
 import { motion } from 'framer-motion';
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: '', password: '' });
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate(); // 🚀 El motor de salto
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     
     try {
-      // 📡 Usamos la antena dinámica. Marie ya sabe que la base es /api/auth/login
       const res = await api.post('/auth/login', formData);
-      
-      // Guardamos el token en el búnker local
       localStorage.setItem('token', res.data.token); 
-      
-      console.log("📡 IDENTIDAD CONFIRMADA: Accediendo al núcleo...");
-      
-      // 🚀 SALTO AUTOMÁTICO: Sin carteles molestos, directo al Feed o al panel
+      console.log("📡 IDENTIDAD CONFIRMADA");
       navigate('/'); 
-
     } catch (err) {
-      console.error("❌ Fallo en la secuencia de acceso:", err.response?.data || err.message);
-      alert('❌ ERROR: CREDENCIALES INVÁLIDAS. Acceso denegado.');
+      console.error("❌ Acceso denegado:", err.response?.data || err.message);
+      alert('❌ ERROR: CREDENCIALES INVÁLIDAS.');
     } finally {
       setLoading(false);
     }
   };
 
-  // ... (Todo tu código de RETURN se mantiene exactamente igual, está perfecto)
-
   return (
     <div className="flex items-center justify-center min-h-screen bg-black overflow-hidden">
-      {/* Fondo con efecto de luz neón - El aura de Marie */}
       <div className="absolute w-96 h-96 bg-green-500/5 rounded-full blur-[150px] -top-10 -left-10"></div>
       <div className="absolute w-64 h-64 bg-green-500/10 rounded-full blur-[120px] bottom-1/4 right-1/3"></div>
       
@@ -63,7 +53,7 @@ const Login = () => {
               <input 
                 type="email" 
                 placeholder="email@cyberenterados.com"
-                className="w-full pl-11 pr-4 py-3.5 bg-black/40 border border-white/5 rounded-xl text-white focus:border-green-500/50 transition-all outline-none text-sm placeholder:text-gray-700"
+                className="w-full pl-11 pr-4 py-3.5 bg-black/40 border border-white/5 rounded-xl text-white focus:border-green-500/50 transition-all outline-none text-sm"
                 onChange={(e) => setFormData({...formData, email: e.target.value})}
                 required
               />
@@ -77,7 +67,7 @@ const Login = () => {
               <input 
                 type="password" 
                 placeholder="••••••••••••"
-                className="w-full pl-11 pr-4 py-3.5 bg-black/40 border border-white/5 rounded-xl text-white focus:border-green-500/50 transition-all outline-none text-sm placeholder:text-gray-700"
+                className="w-full pl-11 pr-4 py-3.5 bg-black/40 border border-white/5 rounded-xl text-white focus:border-green-500/50 transition-all outline-none text-sm"
                 onChange={(e) => setFormData({...formData, password: e.target.value})}
                 required
               />
@@ -88,15 +78,15 @@ const Login = () => {
             type="submit" 
             disabled={loading}
             className={`w-full py-4 rounded-xl font-black text-xs uppercase tracking-[0.2em] transition-all duration-300 border border-green-500/20 
-              ${loading ? 'bg-gray-800 text-gray-500' : 'bg-green-500/10 text-green-400 hover:bg-green-500 hover:text-black shadow-[0_0_20px_rgba(34,197,94,0.2)]'}`}
+              ${loading ? 'bg-gray-800 text-gray-500' : 'bg-green-500/10 text-green-400 hover:bg-green-500 hover:text-black'}`}
           >
             {loading ? 'AUTENTICANDO...' : 'INICIAR SECUENCIA'}
           </button>
         </form>
 
-        <div className="mt-8 pt-6 border-t border-white/5">
-          <p className="text-center text-[9px] text-gray-600 uppercase tracking-[0.3em]">
-             Protocolo Dorothy v3.0 <span className="text-green-900 mx-2">//</span> Marie Core Engaged
+        <div className="mt-8 pt-6 border-t border-white/5 text-center">
+          <p className="text-[9px] text-gray-600 uppercase tracking-[0.3em]">
+             Protocolo Dorothy v3.0 // Marie Core Engaged
           </p>
         </div>
       </motion.div>
