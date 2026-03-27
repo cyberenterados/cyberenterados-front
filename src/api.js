@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-// 📡 Esta línea detecta si estamos en modo LOCAL o en PRODUCCIÓN
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3000';
+// 📡 Apuntamos directamente al búnker de Marie en Render
+const API_URL = 'https://cyberenteradosnews.onrender.com';
 
 const api = axios.create({
     baseURL: API_URL
