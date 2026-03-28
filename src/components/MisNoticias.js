@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom'; // 🎯 Importación clave para navegar
 import { Edit, Trash2, Terminal } from 'lucide-react';
 import axios from 'axios';
 
@@ -6,7 +7,7 @@ const MisNoticias = () => {
   const [noticias, setNoticias] = useState([]);
   const [cargando, setCargando] = useState(true);
 
-  // 📡 Función táctica para contactar a Marie y pedir el archivo
+  // 📡 Función táctica para contactar a Marie
   useEffect(() => {
     const obtenerNoticias = async () => {
       try {
@@ -22,27 +23,18 @@ const MisNoticias = () => {
     obtenerNoticias();
   }, []);
 
-  // 💥 PROTOCOLO DE PURGA (Eliminar Noticia)
+  // 💥 PROTOCOLO DE PURGA
   const eliminarRegistro = async (id, titulo) => {
-    // 1. Confirmación de doble llave de seguridad
     const confirmar = window.confirm(`⚠️ ADVERTENCIA DE PURGA:\n\n¿Está absolutamente seguro de querer destruir el registro:\n"${titulo}"?\n\nEsta acción es irreversible en Atlas DB.`);
     
     if (confirmar) {
       try {
-        // 2. Buscamos el Pase VIP de Comandante
         const token = localStorage.getItem('token');
-        
-        // 3. Disparamos el misil hacia Marie con el Token en la cabecera
         await axios.delete(`https://cyberenteradosnews.onrender.com/api/noticias/${id}`, {
-          headers: {
-            'x-auth-token': token
-          }
+          headers: { 'x-auth-token': token }
         });
-
-        // 4. Actualizamos el radar visual (quitamos la noticia de la pantalla sin recargar la página)
         setNoticias(noticias.filter(noticia => noticia._id !== id));
         alert('💥 ¡OBJETIVO DESTRUIDO CON ÉXITO!');
-
       } catch (error) {
         console.error("❌ Error al purgar:", error);
         alert('❌ Falla en el sistema de armas. No se pudo destruir el registro.');
@@ -100,12 +92,17 @@ const MisNoticias = () => {
                       {new Date(noticia.fecha).toLocaleDateString()}
                     </td>
                     <td className="p-4 flex justify-center gap-3">
-                      {/* Botón Editar (Lo conectaremos en la próxima fase) */}
-                      <button className="p-2 text-yellow-500 hover:bg-yellow-500/10 hover:text-yellow-400 rounded transition-all border border-transparent hover:border-yellow-500/50" title="Modificar Registro">
-                        <Edit className="w-5 h-5" />
-                      </button>
                       
-                      {/* 💥 Botón Eliminar (AHORA ACTIVO) */}
+                      {/* ✏️ Botón Editar (AHORA ACTIVO CON LINK) */}
+                      <Link 
+                        to={`/panel/editar/${noticia._id}`}
+                        className="p-2 text-yellow-500 hover:bg-yellow-500/10 hover:text-yellow-400 rounded transition-all border border-transparent hover:border-yellow-500/50" 
+                        title="Modificar Registro"
+                      >
+                        <Edit className="w-5 h-5" />
+                      </Link>
+                      
+                      {/* 💥 Botón Eliminar */}
                       <button 
                         onClick={() => eliminarRegistro(noticia._id, noticia.titulo)}
                         className="p-2 text-red-500 hover:bg-red-900/40 hover:text-red-400 rounded transition-all border border-transparent hover:border-red-500/50 hover:shadow-[0_0_10px_rgba(255,0,0,0.3)]" 

@@ -7,14 +7,12 @@ import Login from './components/Login';
 import PostNews from './components/PostNews'; 
 import DashboardLayout from './components/DashboardLayout';
 import MisNoticias from './components/MisNoticias'; 
-import DashboardHome from './components/DashboardHome'; // 🎯 ¡NUEVO CENTRO DE INTELIGENCIA!
+import DashboardHome from './components/DashboardHome'; 
+import EditarNoticia from './components/EditarNoticia'; // 🎯 ¡NUEVO MÓDULO DE EDICIÓN!
 
 // 🛡️ EL CAMPO DE FUERZA (Guardián de Rutas)
 const RutaPrivada = ({ children }) => {
-  // Buscamos el pase VIP en la memoria de Ada
   const token = localStorage.getItem('token');
-  
-  // Si hay token, renderizamos el componente (children). Si no, de vuelta al Login.
   return token ? children : <Navigate to="/login" />;
 };
 
@@ -48,16 +46,16 @@ function App() {
             🔒 SECTOR CLASIFICADO (Solo con Token)
             ========================================= */}
         
-        {/* 1. Centro de Inteligencia (Home del Panel) */}
+        {/* 1. Centro de Inteligencia */}
         <Route path="/panel" element={
           <RutaPrivada>
             <DashboardLayout>
-              <DashboardHome /> {/* 🎯 WIDGETS DE TELEMETRÍA ACTIVADOS */}
+              <DashboardHome /> 
             </DashboardLayout>
           </RutaPrivada>
         } />
 
-        {/* 2. El Arsenal (Gestor de Noticias) */}
+        {/* 2. El Arsenal */}
         <Route path="/panel/noticias" element={
           <RutaPrivada>
             <DashboardLayout>
@@ -66,11 +64,20 @@ function App() {
           </RutaPrivada>
         } />
 
-        {/* 3. Consola de Transmisión (Su PostNews.js) */}
+        {/* 3. Consola de Transmisión */}
         <Route path="/panel/publicar" element={
           <RutaPrivada>
             <DashboardLayout>
               <PostNews /> 
+            </DashboardLayout>
+          </RutaPrivada>
+        } />
+
+        {/* 4. Módulo de Edición Táctica ✏️ */}
+        <Route path="/panel/editar/:id" element={
+          <RutaPrivada>
+            <DashboardLayout>
+              <EditarNoticia /> 
             </DashboardLayout>
           </RutaPrivada>
         } />
