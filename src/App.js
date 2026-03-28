@@ -10,7 +10,8 @@ import MisNoticias from './components/MisNoticias';
 import DashboardHome from './components/DashboardHome'; 
 import EditarNoticia from './components/EditarNoticia'; 
 import FeedNoticias from './components/FeedNoticias'; 
-import NoticiaDetalle from './components/NoticiaDetalle'; // 📖 ¡NUEVO MÓDULO DE LECTURA!
+import NoticiaDetalle from './components/NoticiaDetalle'; 
+import Footer from './components/Footer'; // 🎯 ¡NUEVO FOOTER AÑADIDO!
 
 // 🛡️ EL CAMPO DE FUERZA (Guardián de Rutas)
 const RutaPrivada = ({ children }) => {
@@ -30,6 +31,7 @@ function App() {
           <>
             <Navbar />
             <FeedNoticias /> 
+            <Footer /> {/* 🎯 CIERRE VISUAL EN PORTADA */}
           </>
         } />
 
@@ -38,6 +40,7 @@ function App() {
           <>
             <Navbar />
             <NoticiaDetalle />
+            <Footer /> {/* 🎯 CIERRE VISUAL EN LA NOTICIA */}
           </>
         } />
         
@@ -45,6 +48,7 @@ function App() {
           <>
             <Navbar />
             <Login />
+            <Footer /> {/* 🎯 CIERRE VISUAL EN EL LOGIN */}
           </>
         } />
 
