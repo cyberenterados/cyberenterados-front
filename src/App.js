@@ -8,7 +8,8 @@ import PostNews from './components/PostNews';
 import DashboardLayout from './components/DashboardLayout';
 import MisNoticias from './components/MisNoticias'; 
 import DashboardHome from './components/DashboardHome'; 
-import EditarNoticia from './components/EditarNoticia'; // 🎯 ¡NUEVO MÓDULO DE EDICIÓN!
+import EditarNoticia from './components/EditarNoticia'; 
+import FeedNoticias from './components/FeedNoticias'; // 🌍 ¡NUEVA PORTADA PÚBLICA!
 
 // 🛡️ EL CAMPO DE FUERZA (Guardián de Rutas)
 const RutaPrivada = ({ children }) => {
@@ -27,10 +28,7 @@ function App() {
         <Route path="/" element={
           <>
             <Navbar />
-            <div className="p-8 text-center text-white">
-               <h1 className="text-3xl font-bold">Feed Público de CyberEnterados</h1>
-               <p className="text-neutral-400 mt-4">Aquí irán las noticias para sus lectores...</p>
-            </div>
+            <FeedNoticias /> {/* 🎯 EL FEED PÚBLICO ESTÁ VIVO */}
           </>
         } />
         
