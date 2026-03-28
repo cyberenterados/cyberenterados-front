@@ -1,73 +1,69 @@
 import React from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { Terminal, ShieldAlert, LogIn, LogOut } from 'lucide-react';
 
 const Navbar = () => {
-    const navigate = useNavigate();
-    const token = localStorage.getItem('token');
+  const navigate = useNavigate();
+  // Buscamos si hay un pase VIP en el almacenamiento
+  const token = localStorage.getItem('token');
 
-    const handleLogout = () => {
-        localStorage.removeItem('token');
-        navigate('/login'); // Salida fluida sin alertas molestas
-    };
+  // Función de desconexión rápida desde la portada
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    navigate('/');
+  };
 
-    return (
-        <nav style={styles.nav}>
-            <Link to="/" style={styles.logo}>{'>_'} CYBER-NEWS</Link>
-            
-            <div style={styles.links}>
-                {token ? (
-                    <div style={styles.authGroup}>
-                        <span style={styles.welcome}>Comandante 🎖️</span>
-                        {/* 🚀 Atajo rápido al formulario de noticias */}
-                        <Link to="/publicar" style={styles.postBtn}>+ NOTICIA</Link>
-                        <button onClick={handleLogout} style={styles.logoutBtn}>SALIR</button>
-                    </div>
-                ) : (
-                    <Link to="/login" style={styles.loginLink}>INGRESAR</Link>
-                )}
-            </div>
-        </nav>
-    );
-};
+  return (
+    <nav className="bg-black border-b border-green-500/30 sticky top-0 z-50 font-mono selection:bg-green-500/30">
+      <div className="max-w-7xl mx-auto px-6 md:px-12">
+        <div className="flex justify-between items-center h-20">
+          
+          {/* Logo Principal */}
+          <Link to="/" className="flex items-center gap-3 group">
+            <Terminal className="w-8 h-8 text-green-500 group-hover:animate-pulse" />
+            <span className="text-2xl font-bold text-green-500 tracking-tight uppercase drop-shadow-[0_0_8px_rgba(0,255,0,0.3)]">
+              Cyber<span className="text-green-300">EnteradosNews</span>
+            </span>
+          </Link>
 
-const styles = {
-    nav: { 
-        display: 'flex', 
-        justifyContent: 'space-between', 
-        alignItems: 'center',
-        padding: '0.8rem 2rem', 
-        background: '#0a0a0a', 
-        borderBottom: '2px solid #00ff41',
-        boxShadow: '0 4px 10px rgba(0, 255, 65, 0.1)'
-    },
-    logo: { 
-        color: '#00ff41', 
-        textDecoration: 'none', 
-        fontWeight: '900', 
-        fontSize: '1.4rem',
-        fontFamily: 'monospace' 
-    },
-    authGroup: { display: 'flex', alignItems: 'center', gap: '15px' },
-    welcome: { color: '#fff', fontSize: '0.9rem', opacity: 0.8 },
-    postBtn: { 
-        background: '#00ff41', 
-        color: '#000', 
-        textDecoration: 'none', 
-        padding: '5px 12px', 
-        borderRadius: '4px', 
-        fontSize: '0.8rem', 
-        fontWeight: 'bold' 
-    },
-    logoutBtn: { 
-        background: 'transparent', 
-        color: '#ff4b2b', 
-        border: '1px solid #ff4b2b', 
-        padding: '4px 10px', 
-        cursor: 'pointer', 
-        borderRadius: '4px',
-        fontSize: '0.8rem'
-    },
-    loginLink: { color: '#00ff41', textDecoration: 'none', fontWeight: 'bold' }
+          {/* Enlaces y Comandos Tácticos */}
+          <div className="flex items-center gap-6">
+            <Link to="/" className="hidden md:block text-green-600 hover:text-green-400 text-sm uppercase tracking-widest transition-colors">
+              [ Feed_Principal ]
+            </Link>
+
+            {token ? (
+              // 🟢 VISTA DE COMANDANTE (Logueado)
+              <div className="flex items-center gap-4">
+                <Link 
+                  to="/panel" 
+                  className="flex items-center gap-2 text-green-500 hover:text-black hover:bg-green-500 transition-all uppercase tracking-widest text-xs md:text-sm border border-green-500/50 px-3 py-1.5 rounded bg-green-950/30 shadow-[0_0_10px_rgba(0,255,0,0.1)]"
+                >
+                  <ShieldAlert className="w-4 h-4" /> Búnker
+                </Link>
+                <button 
+                  onClick={handleLogout} 
+                  className="flex items-center gap-2 text-red-500 hover:text-red-400 uppercase tracking-widest text-xs font-bold transition-colors"
+                  title="Cerrar Sesión"
+                >
+                  <LogOut className="w-4 h-4 hidden md:block" /> Salir
+                </button>
+              </div>
+            ) : (
+              // ⚪ VISTA DE LECTOR PÚBLICO (No Logueado)
+              <Link 
+                to="/login" 
+                className="flex items-center gap-2 text-green-500 hover:text-green-300 transition-colors uppercase tracking-widest text-xs md:text-sm border border-green-500/50 px-3 py-1.5 rounded hover:bg-green-900/30"
+              >
+                <LogIn className="w-4 h-4" /> Acceso_Root
+              </Link>
+            )}
+          </div>
+
+        </div>
+      </div>
+    </nav>
+  );
 };
 
 export default Navbar;
