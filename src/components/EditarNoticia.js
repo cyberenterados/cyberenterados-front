@@ -83,14 +83,14 @@ const EditarNoticia = () => {
     if (formData.fuenteUrl) data.append('fuenteUrl', formData.fuenteUrl);
     if (formData.multimediaUrl) data.append('multimediaUrl', formData.multimediaUrl);
     
-    // 🚀 LÓGICA DE IMÁGENES ACTUALIZADA
+    // 🚀 LÓGICA DE IMÁGENES CORREGIDA (Evita Error 500)
     if (nuevasImagenes.length > 0) {
       data.append('imagen', nuevasImagenes[0]); // La principal se sobreescribe
       
-      // Adjuntamos todas al array 'galeria' si subió varias
-      nuevasImagenes.forEach(img => {
-          data.append('galeria', img);
-      });
+      // [TEMPORALMENTE DESACTIVADO HASTA ACTUALIZAR CLOUDINARY EN EL BACKEND]
+      // nuevasImagenes.forEach(img => {
+      //     data.append('galeria', img);
+      // });
     }
 
     try {

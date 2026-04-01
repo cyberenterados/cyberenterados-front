@@ -34,15 +34,15 @@ const PostNews = () => {
         const data = new FormData();
         Object.keys(formData).forEach(key => data.append(key, formData[key]));
         
-        // 🚀 LÓGICA DE IMÁGENES ACTUALIZADA
+        // 🚀 LÓGICA DE IMÁGENES CORREGIDA (Evita Error 500)
         if (imagenes.length > 0) {
-            // Mantenemos la primera imagen como 'imagen' principal (portada)
+            // SOLO enviamos la imagen principal a la aduana
             data.append('imagen', imagenes[0]);
             
-            // Adjuntamos todas al nuevo array 'galeria' para el backend
-            imagenes.forEach(img => {
-                data.append('galeria', img);
-            });
+            // [TEMPORALMENTE DESACTIVADO HASTA ACTUALIZAR CLOUDINARY EN EL BACKEND]
+            // imagenes.forEach(img => {
+            //     data.append('galeria', img);
+            // });
         }
 
         try {
