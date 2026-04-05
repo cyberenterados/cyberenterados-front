@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Clock, ArrowRight, Terminal } from 'lucide-react';
 import axios from 'axios';
 import { Link, useLocation } from 'react-router-dom';
-// 🚀 INYECTADO: Sensor Atmosférico
-import WeatherWidget from './WeatherWidget';
+// 🚀 INYECTADO: Sensor Atmosférico y Nodo de Facciones Aliadas
+import WeatherWidget from './WeatherWidget';   // <-- Frecuencia Default (Sin llaves)
+import { SidebarRSS } from './SidebarRSS';     // <-- Frecuencia Nominal (Con llaves)
 
 const FeedNoticias = () => {
   const [noticias, setNoticias] = useState([]);
@@ -14,7 +15,7 @@ const FeedNoticias = () => {
   const queryParams = new URLSearchParams(location.search);
   const categoriaFiltro = queryParams.get('categoria');
 
-// 🧠 LÓGICA DE FILTRADO TÁCTICO (Blindado contra tildes)
+  // 🧠 LÓGICA DE FILTRADO TÁCTICO (Blindado contra tildes)
   const normalizarTexto = (texto) => 
     texto ? texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase() : "";
 
@@ -22,7 +23,7 @@ const FeedNoticias = () => {
     ? noticias.filter(n => normalizarTexto(n.categoria) === normalizarTexto(categoriaFiltro))
     : noticias;
   
-    // 🚀 NUEVO: Protocolo de alineación vertical
+  // 🚀 NUEVO: Protocolo de alineación vertical
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [categoriaFiltro]);
@@ -55,11 +56,13 @@ const FeedNoticias = () => {
   return (
     // 🟢 Fondo más claro (gray-900) y fuente monoespaciada estricta
     <div className="bg-gray-900 min-h-screen pt-12 pb-24 px-6 md:px-12 font-mono selection:bg-green-500/30">
-      <div className="max-w-7xl mx-auto">
+      
+      {/* 🚀 EXPANSIÓN DE RADAR: Cambiado a max-w-[1600px] para soportar 3 columnas + Sidebar */}
+      <div className="max-w-[1600px] mx-auto">
         
         {/* Encabezado del Feed Público */}
         <div className="mb-16 border-b border-green-500/30 pb-8 flex items-center gap-4">
-          
+          <Terminal className="w-12 h-12 text-green-500" />
           <div>
               <h1 className="text-4xl md:text-5xl font-bold text-green-500 tracking-tight uppercase drop-shadow-[0_0_8px_rgba(0,255,0,0.3)]">
                 Cyber<span className="text-green-300">Enterados</span>
@@ -73,67 +76,79 @@ const FeedNoticias = () => {
         {/* 🛰️ FASE 4: Sensor Meteorológico de Proximidad */}
         <WeatherWidget />
 
-        {/* Cuadrícula de Noticias (Grid) - SINTAXIS CORREGIDA AQUÍ */}
-        {noticiasFiltradas.length === 0 ? (
-          <div className="text-center text-green-600/50 py-20 border border-dashed border-green-500/30 rounded bg-gray-800/50">
-            <p className="text-xl">&gt; No hay transmisiones activas en el radar público.</p>
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {noticiasFiltradas.map((noticia) => (
-              <article key={noticia._id} className="bg-gray-800 border border-green-500/30 rounded-lg overflow-hidden hover:border-green-400 hover:shadow-[0_0_20px_rgba(0,255,0,0.15)] transition-all duration-300 group flex flex-col relative">
-                
-                {/* Imagen de Portada */}
-                <div className="h-56 overflow-hidden relative bg-gray-900 border-b border-green-500/30">
-                  {noticia.imagenUrl ? (
-                    // Efecto visual: la imagen se ve un poco "hackeada" (luminosity) y toma color al pasar el mouse
-                    <img 
-                      src={noticia.imagenUrl} 
-                      alt={noticia.titulo} 
-                      className="w-full h-full object-cover group-hover:scale-105 transition-all duration-500 opacity-80 group-hover:opacity-100 mix-blend-luminosity hover:mix-blend-normal"
-                    />
-                  ) : (
-                    <div className="w-full h-full bg-[linear-gradient(rgba(0,255,0,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,0,0.05)_1px,transparent_1px)] bg-[size:20px_20px] flex items-center justify-center">
-                      <Terminal className="w-12 h-12 text-green-900" />
+        {/* 📱 MAQUETACIÓN TÁCTICA DE ALTO RENDIMIENTO (Grid 12 Columnas) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+          
+          {/* COLUMNA IZQUIERDA: Noticias Propias (Ocupa 9 de 12 espacios, el 75%) */}
+          <div className="lg:col-span-9">
+            {noticiasFiltradas.length === 0 ? (
+              <div className="text-center text-green-600/50 py-20 border border-dashed border-green-500/30 rounded bg-gray-800/50">
+                <p className="text-xl">&gt; No hay transmisiones activas en el radar público.</p>
+              </div>
+            ) : (
+              // 🟢 EL TRUCO VISUAL: md:grid-cols-2 y xl:grid-cols-3 para expandir a 3 noticias
+              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+                {noticiasFiltradas.map((noticia) => (
+                  <article key={noticia._id} className="bg-gray-800 border border-green-500/30 rounded-lg overflow-hidden hover:border-green-400 hover:shadow-[0_0_20px_rgba(0,255,0,0.15)] transition-all duration-300 group flex flex-col relative">
+                    
+                    {/* Imagen de Portada */}
+                    <div className="h-56 overflow-hidden relative bg-gray-900 border-b border-green-500/30">
+                      {noticia.imagenUrl ? (
+                        <img 
+                          src={noticia.imagenUrl} 
+                          alt={noticia.titulo} 
+                          className="w-full h-full object-cover group-hover:scale-105 transition-all duration-500 opacity-80 group-hover:opacity-100 mix-blend-luminosity hover:mix-blend-normal"
+                        />
+                      ) : (
+                        <div className="w-full h-full bg-[linear-gradient(rgba(0,255,0,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,0,0.05)_1px,transparent_1px)] bg-[size:20px_20px] flex items-center justify-center">
+                          <Terminal className="w-12 h-12 text-green-900" />
+                        </div>
+                      )}
+                      {/* Badge de Categoría */}
+                      <div className="absolute top-4 left-4">
+                        <span className="px-3 py-1 bg-gray-900/90 border border-green-500/50 text-green-400 text-[10px] font-bold uppercase tracking-widest rounded shadow-[0_0_10px_rgba(0,255,0,0.2)]">
+                          {noticia.categoria || 'GENERAL'}
+                        </span>
+                      </div>
                     </div>
-                  )}
-                  {/* Badge de Categoría */}
-                  <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1 bg-gray-900/90 border border-green-500/50 text-green-400 text-[10px] font-bold uppercase tracking-widest rounded shadow-[0_0_10px_rgba(0,255,0,0.2)]">
-                      {noticia.categoria || 'GENERAL'}
-                    </span>
-                  </div>
-                </div>
 
-                {/* Contenido de la Tarjeta */}
-                <div className="p-6 flex flex-col flex-grow">
-                  <div className="flex items-center gap-2 text-green-700 text-xs mb-4 uppercase tracking-widest">
-                    <Clock className="w-4 h-4" />
-                    <span>{new Date(noticia.fecha).toLocaleDateString()}</span>
-                  </div>
-                  
-                  <h3 className="text-xl font-bold text-green-400 mb-3 leading-tight group-hover:text-green-300 transition-colors uppercase">
-                    &gt; {noticia.titulo}
-                  </h3>
-                  
-                  <p className="text-green-600/80 line-clamp-3 mb-6 flex-grow text-sm">
-                    {noticia.resumen}
-                  </p>
-                  
-                  {/* Botón de "Leer Más" */}
-                  <Link 
-                    to={`/noticia/${noticia._id}`} 
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-green-500 font-bold hover:text-green-300 transition-colors mt-auto w-max uppercase tracking-widest text-sm border-b border-transparent hover:border-green-400 pb-1"
-                  >
-                    [ Leer_Reporte ] <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </Link>
-                </div>
-              </article>
-            ))}
+                    {/* Contenido de la Tarjeta */}
+                    <div className="p-6 flex flex-col flex-grow">
+                      <div className="flex items-center gap-2 text-green-700 text-xs mb-4 uppercase tracking-widest">
+                        <Clock className="w-4 h-4" />
+                        <span>{new Date(noticia.fecha).toLocaleDateString()}</span>
+                      </div>
+                      
+                      <h3 className="text-xl font-bold text-green-400 mb-3 leading-tight group-hover:text-green-300 transition-colors uppercase">
+                        &gt; {noticia.titulo}
+                      </h3>
+                      
+                      <p className="text-green-600/80 line-clamp-3 mb-6 flex-grow text-sm">
+                        {noticia.resumen}
+                      </p>
+                      
+                      {/* Botón de "Leer Más" */}
+                      <Link 
+                        to={`/noticia/${noticia._id}`} 
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 text-green-500 font-bold hover:text-green-300 transition-colors mt-auto w-max uppercase tracking-widest text-sm border-b border-transparent hover:border-green-400 pb-1"
+                      >
+                        [ Leer_Reporte ] <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                      </Link>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            )}
           </div>
-        )}
+
+          {/* COLUMNA DERECHA: Sidebar RSS (Ocupa 3 de 12 espacios, el 25%) */}
+          <div className="lg:col-span-3">
+            <SidebarRSS />
+          </div>
+
+        </div>
 
       </div>
     </div>
