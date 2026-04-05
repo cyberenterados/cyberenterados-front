@@ -21,6 +21,11 @@ const FeedNoticias = () => {
   const noticiasFiltradas = categoriaFiltro 
     ? noticias.filter(n => normalizarTexto(n.categoria) === normalizarTexto(categoriaFiltro))
     : noticias;
+  
+    // 🚀 NUEVO: Protocolo de alineación vertical
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [categoriaFiltro]);
 
   // 📡 Conectamos al servidor público de Marie
   useEffect(() => {
