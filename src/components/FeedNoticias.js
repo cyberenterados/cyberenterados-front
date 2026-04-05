@@ -1,11 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import { Clock, ArrowRight, Terminal } from 'lucide-react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const FeedNoticias = () => {
   const [noticias, setNoticias] = useState([]);
   const [cargando, setCargando] = useState(true);
+
+  // 🔍 NUEVO: Sensor de URL y Procesador de Filtrado
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const categoriaFiltro = queryParams.get('categoria');
+
+// 🧠 LÓGICA DE FILTRADO TÁCTICO (Blindado contra tildes)
+  const normalizarTexto = (texto) => 
+    texto ? texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase() : "";
+
+  const noticiasFiltradas = categoriaFiltro 
+    ? noticias.filter(n => normalizarTexto(n.categoria) === normalizarTexto(categoriaFiltro))
+    : noticias;
 
   // 📡 Conectamos al servidor público de Marie
   useEffect(() => {
@@ -50,14 +63,14 @@ const FeedNoticias = () => {
           </div>
         </div>
 
-        {/* Cuadrícula de Noticias (Grid) */}
-        {noticias.length === 0 ? (
+        {/* Cuadrícula de Noticias (Grid) - SINTAXIS CORREGIDA AQUÍ */}
+        {noticiasFiltradas.length === 0 ? (
           <div className="text-center text-green-600/50 py-20 border border-dashed border-green-500/30 rounded bg-gray-800/50">
             <p className="text-xl">&gt; No hay transmisiones activas en el radar público.</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {noticias.map((noticia) => (
+            {noticiasFiltradas.map((noticia) => (
               <article key={noticia._id} className="bg-gray-800 border border-green-500/30 rounded-lg overflow-hidden hover:border-green-400 hover:shadow-[0_0_20px_rgba(0,255,0,0.15)] transition-all duration-300 group flex flex-col relative">
                 
                 {/* Imagen de Portada */}
@@ -100,6 +113,8 @@ const FeedNoticias = () => {
                   {/* Botón de "Leer Más" */}
                   <Link 
                     to={`/noticia/${noticia._id}`} 
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 text-green-500 font-bold hover:text-green-300 transition-colors mt-auto w-max uppercase tracking-widest text-sm border-b border-transparent hover:border-green-400 pb-1"
                   >
                     [ Leer_Reporte ] <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
