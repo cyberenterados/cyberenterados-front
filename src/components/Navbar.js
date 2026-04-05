@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Terminal, ShieldAlert, LogOut, Twitter, Youtube, Github } from 'lucide-react';
-// 🚀 INYECTADO: Importación nominal (Named Import) para evitar errores de tipo objeto
+import { ShieldAlert, LogOut, Twitter, Youtube, Github } from 'lucide-react';// 🚀 INYECTADO: Importación nominal (Named Import) para evitar errores de tipo objeto
 import { TickerFinanciero } from './TickerFinanciero'; 
 
 const Navbar = () => {
