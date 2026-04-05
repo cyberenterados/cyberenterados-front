@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Cloud, Sun, CloudRain, Wind, MapPin } from 'lucide-react';
+import { Sun, Wind, MapPin } from 'lucide-react';
 
 const WeatherWidget = () => {
   const [clima, setClima] = useState(null);
