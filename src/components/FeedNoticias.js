@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Clock, ArrowRight, Terminal } from 'lucide-react';
 import axios from 'axios';
 import { Link, useLocation } from 'react-router-dom';
+// 🚀 INYECTADO: Sensor Atmosférico
+import WeatherWidget from './WeatherWidget';
 
 const FeedNoticias = () => {
   const [noticias, setNoticias] = useState([]);
@@ -62,6 +64,9 @@ const FeedNoticias = () => {
               </p>
           </div>
         </div>
+
+        {/* 🛰️ FASE 4: Sensor Meteorológico de Proximidad */}
+        <WeatherWidget />
 
         {/* Cuadrícula de Noticias (Grid) - SINTAXIS CORREGIDA AQUÍ */}
         {noticiasFiltradas.length === 0 ? (
