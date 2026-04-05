@@ -54,7 +54,7 @@ const FeedNoticias = () => {
         
         {/* Encabezado del Feed Público */}
         <div className="mb-16 border-b border-green-500/30 pb-8 flex items-center gap-4">
-          <Terminal className="w-12 h-12 text-green-500" />
+          
           <div>
               <h1 className="text-4xl md:text-5xl font-bold text-green-500 tracking-tight uppercase drop-shadow-[0_0_8px_rgba(0,255,0,0.3)]">
                 Cyber<span className="text-green-300">Enterados</span>

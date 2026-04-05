@@ -29,7 +29,7 @@ const Navbar = () => {
             
             {/* Logo de Operaciones: >_ */}
             <Link to="/" className="flex items-center gap-3 group">
-              <Terminal className="w-8 h-8 text-green-500 group-hover:animate-pulse" />
+              
               <span className="text-3xl font-bold text-green-500 tracking-widest drop-shadow-[0_0_8px_rgba(0,255,0,0.3)]">
                 &gt;_
               </span>
