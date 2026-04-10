@@ -86,52 +86,61 @@ const FeedNoticias = () => {
               </div>
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-                {noticiasFiltradas.map((noticia) => (
-                  <article key={noticia._id} className="bg-gray-800 border border-green-500/30 rounded-lg overflow-hidden hover:border-green-400 hover:shadow-[0_0_20px_rgba(0,255,0,0.15)] transition-all duration-300 group flex flex-col relative">
+                {noticiasFiltradas.map((noticia, index) => (
+                  <React.Fragment key={noticia._id}>
                     
-                    <div className="h-56 overflow-hidden relative bg-gray-900 border-b border-green-500/30">
-                      {noticia.imagenUrl ? (
-                        <img 
-                          src={noticia.imagenUrl} 
-                          alt={noticia.titulo} 
-                          className="w-full h-full object-cover group-hover:scale-105 transition-all duration-500 opacity-80 group-hover:opacity-100 mix-blend-luminosity hover:mix-blend-normal"
-                        />
-                      ) : (
-                        <div className="w-full h-full bg-[linear-gradient(rgba(0,255,0,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,0,0.05)_1px,transparent_1px)] bg-[size:20px_20px] flex items-center justify-center">
-                          <Terminal className="w-12 h-12 text-green-900" />
+                    {/* 1. TARJETA DE NOTICIA REAL */}
+                    <article className="bg-gray-800 border border-green-500/30 rounded-lg overflow-hidden hover:border-green-400 hover:shadow-[0_0_20px_rgba(0,255,0,0.15)] transition-all duration-300 group flex flex-col relative">
+                      <div className="h-56 overflow-hidden relative bg-gray-900 border-b border-green-500/30">
+                        {noticia.imagenUrl ? (
+                          <img 
+                            src={noticia.imagenUrl} 
+                            alt={noticia.titulo} 
+                            className="w-full h-full object-cover group-hover:scale-105 transition-all duration-500 opacity-80 group-hover:opacity-100 mix-blend-luminosity hover:mix-blend-normal"
+                          />
+                        ) : (
+                          <div className="w-full h-full bg-[linear-gradient(rgba(0,255,0,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,0,0.05)_1px,transparent_1px)] bg-[size:20px_20px] flex items-center justify-center">
+                            <Terminal className="w-12 h-12 text-green-900" />
+                          </div>
+                        )}
+                        <div className="absolute top-4 left-4">
+                          <span className="px-3 py-1 bg-gray-900/90 border border-green-500/50 text-green-400 text-[10px] font-bold uppercase tracking-widest rounded shadow-[0_0_10px_rgba(0,255,0,0.2)]">
+                            {noticia.categoria || 'GENERAL'}
+                          </span>
                         </div>
-                      )}
-                      <div className="absolute top-4 left-4">
-                        <span className="px-3 py-1 bg-gray-900/90 border border-green-500/50 text-green-400 text-[10px] font-bold uppercase tracking-widest rounded shadow-[0_0_10px_rgba(0,255,0,0.2)]">
-                          {noticia.categoria || 'GENERAL'}
-                        </span>
                       </div>
-                    </div>
 
-                    <div className="p-6 flex flex-col flex-grow">
-                      <div className="flex items-center gap-2 text-green-700 text-xs mb-4 uppercase tracking-widest">
-                        <Clock className="w-4 h-4" />
-                        <span>{new Date(noticia.fecha).toLocaleDateString()}</span>
+                      <div className="p-6 flex flex-col flex-grow">
+                        <div className="flex items-center gap-2 text-green-700 text-xs mb-4 uppercase tracking-widest">
+                          <Clock className="w-4 h-4" />
+                          <span>{new Date(noticia.fecha).toLocaleDateString()}</span>
+                        </div>
+                        
+                        <h3 className="text-xl font-bold text-green-400 mb-3 leading-tight group-hover:text-green-300 transition-colors uppercase">
+                          &gt; {noticia.titulo}
+                        </h3>
+                        
+                        <p className="text-green-600/80 line-clamp-3 mb-6 flex-grow text-sm">
+                          {noticia.resumen}
+                        </p>
+                        
+                        <Link 
+                          to={`/noticia/${noticia._id}`} 
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 text-green-500 font-bold hover:text-green-300 transition-colors mt-auto w-max uppercase tracking-widest text-sm border-b border-transparent hover:border-green-400 pb-1"
+                        >
+                          [ Leer_Reporte ] <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                        </Link>
                       </div>
-                      
-                      <h3 className="text-xl font-bold text-green-400 mb-3 leading-tight group-hover:text-green-300 transition-colors uppercase">
-                        &gt; {noticia.titulo}
-                      </h3>
-                      
-                      <p className="text-green-600/80 line-clamp-3 mb-6 flex-grow text-sm">
-                        {noticia.resumen}
-                      </p>
-                      
-                      <Link 
-                        to={`/noticia/${noticia._id}`} 
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-green-500 font-bold hover:text-green-300 transition-colors mt-auto w-max uppercase tracking-widest text-sm border-b border-transparent hover:border-green-400 pb-1"
-                      >
-                        [ Leer_Reporte ] <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                      </Link>
-                    </div>
-                  </article>
+                    </article>
+
+                    {/* 🚀 2. INYECCIÓN TÁCTICA: Camuflaje cada 4 tarjetas */}
+                    {(index + 1) % 4 === 0 && (
+                      <AdSenseWidget type="in-feed-card" />
+                    )}
+
+                  </React.Fragment>
                 ))}
               </div>
             )}
