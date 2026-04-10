@@ -45,7 +45,7 @@ export const SidebarRSS = () => {
   }, []);
 
   return (
-    <aside className="bg-black/40 border border-green-500/20 p-6 rounded-lg font-mono h-fit sticky top-24 shadow-[0_0_20px_rgba(0,0,0,0.8)] backdrop-blur-sm">
+    <aside className="bg-black/40 border border-green-500/20 p-6 rounded-lg font-mono h-fit shadow-[0_0_20px_rgba(0,0,0,0.8)] backdrop-blur-sm">
       <div className="flex items-center gap-3 mb-6 border-b border-green-500/30 pb-4">
         <Radio className="w-5 h-5 text-green-500 animate-pulse" />
         <h2 className="text-sm font-bold text-green-500 uppercase tracking-[0.2em]">

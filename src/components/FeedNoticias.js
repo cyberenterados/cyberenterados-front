@@ -2,20 +2,19 @@ import React, { useState, useEffect } from 'react';
 import { Clock, ArrowRight, Terminal } from 'lucide-react';
 import axios from 'axios';
 import { Link, useLocation } from 'react-router-dom';
-// 🚀 INYECTADO: Sensor Atmosférico y Nodo de Facciones Aliadas
-import WeatherWidget from './WeatherWidget';   // <-- Frecuencia Default (Sin llaves)
-import { SidebarRSS } from './SidebarRSS';     // <-- Frecuencia Nominal (Con llaves)
+import WeatherWidget from './WeatherWidget';
+import { SidebarRSS } from './SidebarRSS';
+// 🚀 INYECTADO: Arsenal de Monetización (Simulador)
+import AdSenseWidget from './AdSenseWidget';
 
 const FeedNoticias = () => {
   const [noticias, setNoticias] = useState([]);
   const [cargando, setCargando] = useState(true);
 
-  // 🔍 NUEVO: Sensor de URL y Procesador de Filtrado
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const categoriaFiltro = queryParams.get('categoria');
 
-  // 🧠 LÓGICA DE FILTRADO TÁCTICO (Blindado contra tildes)
   const normalizarTexto = (texto) => 
     texto ? texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase() : "";
 
@@ -23,12 +22,10 @@ const FeedNoticias = () => {
     ? noticias.filter(n => normalizarTexto(n.categoria) === normalizarTexto(categoriaFiltro))
     : noticias;
   
-  // 🚀 NUEVO: Protocolo de alineación vertical
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [categoriaFiltro]);
 
-  // 📡 Conectamos al servidor público de Marie
   useEffect(() => {
     const obtenerNoticias = async () => {
       try {
@@ -54,10 +51,8 @@ const FeedNoticias = () => {
   }
 
   return (
-    // 🟢 Fondo más claro (gray-900) y fuente monoespaciada estricta
     <div className="bg-gray-900 min-h-screen pt-12 pb-24 px-6 md:px-12 font-mono selection:bg-green-500/30">
       
-      {/* 🚀 EXPANSIÓN DE RADAR: Cambiado a max-w-[1600px] para soportar 3 columnas + Sidebar */}
       <div className="max-w-[1600px] mx-auto">
         
         {/* Encabezado del Feed Público */}
@@ -73,25 +68,27 @@ const FeedNoticias = () => {
           </div>
         </div>
 
-        {/* 🛰️ FASE 4: Sensor Meteorológico de Proximidad */}
+        {/* 🛰️ Sensor Meteorológico */}
         <WeatherWidget />
 
-        {/* 📱 MAQUETACIÓN TÁCTICA DE ALTO RENDIMIENTO (Grid 12 Columnas) */}
+        {/* 📱 MAQUETACIÓN TÁCTICA (Grid 12 Columnas) */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
           
-          {/* COLUMNA IZQUIERDA: Noticias Propias (Ocupa 9 de 12 espacios, el 75%) */}
-          <div className="lg:col-span-9">
+          {/* COLUMNA IZQUIERDA: Noticias y Banners Centrales */}
+          <div className="lg:col-span-9 flex flex-col gap-8">
+            
+            {/* 💵 ESPACIO AD-SENSE SUPERIOR */}
+            <AdSenseWidget type="banner" />
+
             {noticiasFiltradas.length === 0 ? (
               <div className="text-center text-green-600/50 py-20 border border-dashed border-green-500/30 rounded bg-gray-800/50">
                 <p className="text-xl">&gt; No hay transmisiones activas en el radar público.</p>
               </div>
             ) : (
-              // 🟢 EL TRUCO VISUAL: md:grid-cols-2 y xl:grid-cols-3 para expandir a 3 noticias
               <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
                 {noticiasFiltradas.map((noticia) => (
                   <article key={noticia._id} className="bg-gray-800 border border-green-500/30 rounded-lg overflow-hidden hover:border-green-400 hover:shadow-[0_0_20px_rgba(0,255,0,0.15)] transition-all duration-300 group flex flex-col relative">
                     
-                    {/* Imagen de Portada */}
                     <div className="h-56 overflow-hidden relative bg-gray-900 border-b border-green-500/30">
                       {noticia.imagenUrl ? (
                         <img 
@@ -104,7 +101,6 @@ const FeedNoticias = () => {
                           <Terminal className="w-12 h-12 text-green-900" />
                         </div>
                       )}
-                      {/* Badge de Categoría */}
                       <div className="absolute top-4 left-4">
                         <span className="px-3 py-1 bg-gray-900/90 border border-green-500/50 text-green-400 text-[10px] font-bold uppercase tracking-widest rounded shadow-[0_0_10px_rgba(0,255,0,0.2)]">
                           {noticia.categoria || 'GENERAL'}
@@ -112,7 +108,6 @@ const FeedNoticias = () => {
                       </div>
                     </div>
 
-                    {/* Contenido de la Tarjeta */}
                     <div className="p-6 flex flex-col flex-grow">
                       <div className="flex items-center gap-2 text-green-700 text-xs mb-4 uppercase tracking-widest">
                         <Clock className="w-4 h-4" />
@@ -127,7 +122,6 @@ const FeedNoticias = () => {
                         {noticia.resumen}
                       </p>
                       
-                      {/* Botón de "Leer Más" */}
                       <Link 
                         to={`/noticia/${noticia._id}`} 
                         target="_blank"
@@ -141,11 +135,23 @@ const FeedNoticias = () => {
                 ))}
               </div>
             )}
+
+            {/* 💵 ESPACIO AD-SENSE INFERIOR */}
+            <AdSenseWidget type="banner" />
+
           </div>
 
-          {/* COLUMNA DERECHA: Sidebar RSS (Ocupa 3 de 12 espacios, el 25%) */}
-          <div className="lg:col-span-3">
+          {/* COLUMNA DERECHA: Sidebar RSS y Banners */}
+          <div className="lg:col-span-3 flex flex-col gap-8">
+            
+            {/* 🚀 Nodo de Inteligencia */}
             <SidebarRSS />
+
+            {/* 💵 ESPACIO AD-SENSE LATERAL (Anclado para bajar con el usuario) */}
+            <div className="sticky top-24 w-full h-fit">
+               <AdSenseWidget type="sidebar" />
+            </div>
+
           </div>
 
         </div>
