@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { ShieldAlert, LogOut, Twitter, Youtube, Github } from 'lucide-react';// 🚀 INYECTADO: Importación nominal (Named Import) para evitar errores de tipo objeto
+// 🚀 INYECTADO: Importación del escuadrón completo de satélites sociales
+import { ShieldAlert, LogOut, Twitter, Instagram, Facebook, Youtube, Film, Terminal } from 'lucide-react';
 import { TickerFinanciero } from './TickerFinanciero'; 
 
 const Navbar = () => {
@@ -28,7 +29,6 @@ const Navbar = () => {
             
             {/* Logo de Operaciones: >_ */}
             <Link to="/" className="flex items-center gap-3 group">
-              
               <span className="text-3xl font-bold text-green-500 tracking-widest drop-shadow-[0_0_8px_rgba(0,255,0,0.3)]">
                 &gt;_
               </span>
@@ -54,17 +54,30 @@ const Navbar = () => {
                   </button>
                 </div>
               ) : (
-                // 🌐 VISTA DE LECTOR (Nodos de Difusión)
+                // 🌐 VISTA DE LECTOR (Nodos de Difusión Oficiales)
                 <div className="flex items-center gap-5 text-green-600">
-                  <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-green-300 transition-colors">
+                  <a href="https://x.com/cyberenterados" target="_blank" rel="noopener noreferrer" className="hover:text-green-300 transition-colors" title="X (Twitter): CyberEnterados">
                     <Twitter className="w-5 h-5" />
                   </a>
-                  <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="hover:text-green-300 transition-colors">
+                  <a href="https://www.instagram.com/cyberenterados/?hl=es" target="_blank" rel="noopener noreferrer" className="hover:text-green-300 transition-colors" title="Instagram: CyberEnterados">
+                    <Instagram className="w-5 h-5" />
+                  </a>
+                  <a href="https://www.facebook.com/cyberenterados?locale=es_LA" target="_blank" rel="noopener noreferrer" className="hover:text-green-300 transition-colors" title="Facebook: CyberEnterados">
+                    <Facebook className="w-5 h-5" />
+                  </a>
+                  <a href="https://www.youtube.com/@cyberenterados" target="_blank" rel="noopener noreferrer" className="hover:text-green-300 transition-colors" title="YouTube: CyberEnterados">
                     <Youtube className="w-5 h-5" />
                   </a>
-                  <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="hover:text-green-300 transition-colors">
-                    <Github className="w-5 h-5" />
+                  <a href="https://www.tiktok.com/@cyberenteradosnews" target="_blank" rel="noopener noreferrer" className="hover:text-green-300 transition-colors" title="TikTok: CyberEnteradosNews">
+                    <Film className="w-5 h-5" />
                   </a>
+
+                  {/* 🚀 [ PUERTO DE EXPANSIÓN RESERVADO ] 
+                      Descomentar el siguiente bloque para inyectar una nueva red en el futuro:
+                  */}
+                  {/* <a href="URL_NUEVA_RED" target="_blank" rel="noopener noreferrer" className="hover:text-green-300 transition-colors" title="Nueva Red Táctica">
+                    <Terminal className="w-5 h-5" />
+                  </a> */}
                 </div>
               )}
             </div>
