@@ -1,5 +1,5 @@
 import React from 'react';
-import { Terminal, Youtube, Twitch, Github, MapPin } from 'lucide-react';
+import { Terminal, Youtube, Twitter, Instagram, Facebook, Film, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
@@ -17,7 +17,7 @@ const Footer = () => {
               </span>
             </div>
             <p className="text-green-600/80 text-sm leading-relaxed">
-              Red pública de información tecnológica y cibernética. Transmitiendo conocimiento encriptado para la resistencia digital y monetización estratégica.
+              🌐 Bienvenidos a CyberEnterados News 📰✨ Tu fuente de información para lo más comentado y asombroso del mundo digital y nuestra actualidad. 🚀 Desde tecnología hasta cultura, ¡cubriendo todo lo que necesitas saber para estar al día! 🌟
             </p>
           </div>
 
@@ -29,7 +29,18 @@ const Footer = () => {
                 <Link to="/" className="hover:text-green-400 transition-colors before:content-['-_']">Feed_Principal</Link>
               </li>
               <li>
-                <Link to="/login" className="hover:text-green-400 transition-colors before:content-['-_']">Acceso_Root (Comandante)</Link>
+                <Link to="/login" className="hover:text-green-400 transition-colors before:content-['-_']">Root</Link>
+              </li>
+              {/* 🚀 NODO DE IDENTIDAD EXTERNO INYECTADO */}
+              <li>
+                <a 
+                  href="https://cyberenterados.github.io/ManuExplora-Dossier_identidad/" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="hover:text-green-400 transition-colors font-bold"
+                >
+                  &gt;_ EXPEDIENTE_REDACTOR
+                </a>
               </li>
             </ul>
           </div>
@@ -37,22 +48,44 @@ const Footer = () => {
           {/* Redes y Ubicación */}
           <div className="space-y-4">
             <h3 className="text-green-400 font-bold uppercase tracking-widest text-sm">&gt; Frecuencias_Abiertas</h3>
-            <div className="flex gap-4">
-              {/* Canal de YouTube */}
-              <a href="https://youtube.com/@ManuExplora" target="_blank" rel="noopener noreferrer" className="p-2 bg-green-950/30 rounded border border-green-900 hover:border-green-400 hover:text-green-400 transition-all shadow-[0_0_0_rgba(0,255,0,0)] hover:shadow-[0_0_10px_rgba(0,255,0,0.2)]" title="YouTube: ManuExplora">
+            <div className="flex flex-wrap gap-4">
+              
+              {/* 🐦 Canal de X (Twitter) */}
+              <a href="https://x.com/cyberenterados" target="_blank" rel="noopener noreferrer" className="p-2 bg-green-950/30 rounded border border-green-900 hover:border-green-400 hover:text-green-400 transition-all shadow-[0_0_0_rgba(0,255,0,0)] hover:shadow-[0_0_10px_rgba(0,255,0,0.2)]" title="X (Twitter): CyberEnterados">
+                <Twitter className="w-5 h-5" />
+              </a>
+              
+              {/* 📸 Canal de Instagram */}
+              <a href="https://www.instagram.com/cyberenterados/?hl=es" target="_blank" rel="noopener noreferrer" className="p-2 bg-green-950/30 rounded border border-green-900 hover:border-green-400 hover:text-green-400 transition-all shadow-[0_0_0_rgba(0,255,0,0)] hover:shadow-[0_0_10px_rgba(0,255,0,0.2)]" title="Instagram: CyberEnterados">
+                <Instagram className="w-5 h-5" />
+              </a>
+              
+              {/* 📘 Canal de Facebook */}
+              <a href="https://www.facebook.com/cyberenterados?locale=es_LA" target="_blank" rel="noopener noreferrer" className="p-2 bg-green-950/30 rounded border border-green-900 hover:border-green-400 hover:text-green-400 transition-all shadow-[0_0_0_rgba(0,255,0,0)] hover:shadow-[0_0_10px_rgba(0,255,0,0.2)]" title="Facebook: CyberEnterados">
+                <Facebook className="w-5 h-5" />
+              </a>
+
+              {/* 📺 Canal de YouTube */}
+              <a href="https://www.youtube.com/@cyberenterados" target="_blank" rel="noopener noreferrer" className="p-2 bg-green-950/30 rounded border border-green-900 hover:border-green-400 hover:text-green-400 transition-all shadow-[0_0_0_rgba(0,255,0,0)] hover:shadow-[0_0_10px_rgba(0,255,0,0.2)]" title="YouTube: CyberEnterados">
                 <Youtube className="w-5 h-5" />
               </a>
-              {/* Canal de Twitch */}
-              <a href="https://twitch.tv/steelfire_9239" target="_blank" rel="noopener noreferrer" className="p-2 bg-green-950/30 rounded border border-green-900 hover:border-green-400 hover:text-green-400 transition-all shadow-[0_0_0_rgba(0,255,0,0)] hover:shadow-[0_0_10px_rgba(0,255,0,0.2)]" title="Twitch: @steelfire_9239">
-                <Twitch className="w-5 h-5" />
+              
+              {/* 📱 Canal de TikTok */}
+              <a href="https://www.tiktok.com/@cyberenteradosnews" target="_blank" rel="noopener noreferrer" className="p-2 bg-green-950/30 rounded border border-green-900 hover:border-green-400 hover:text-green-400 transition-all shadow-[0_0_0_rgba(0,255,0,0)] hover:shadow-[0_0_10px_rgba(0,255,0,0.2)]" title="TikTok: CyberEnteradosNews">
+                <Film className="w-5 h-5" />
               </a>
-              {/* Repositorio Github (Opcional) */}
-              <a href="https://github.com/cyberenterados" target="_blank" rel="noopener noreferrer" className="p-2 bg-green-950/30 rounded border border-green-900 hover:border-green-400 hover:text-green-400 transition-all shadow-[0_0_0_rgba(0,255,0,0)] hover:shadow-[0_0_10px_rgba(0,255,0,0.2)]">
-                <Github className="w-5 h-5" />
-              </a>
+
+              {/* 🚀 [ PUERTO DE EXPANSIÓN RESERVADO ] 
+                  Descomentar el siguiente bloque para inyectar una nueva red en el futuro:
+              */}
+              {/* <a href="URL_NUEVA_RED" target="_blank" rel="noopener noreferrer" className="p-2 bg-green-950/30 rounded border border-green-900 hover:border-green-400 hover:text-green-400 transition-all shadow-[0_0_0_rgba(0,255,0,0)] hover:shadow-[0_0_10px_rgba(0,255,0,0.2)]" title="Nueva Red Táctica">
+                <Terminal className="w-5 h-5" />
+              </a> 
+              */}
+
             </div>
             
-            {/* Telemetría Falsa (Ubicación real) para dar ambiente */}
+            {/* Telemetría Falsa (Ubicación real) */}
             <div className="flex items-center gap-2 text-green-700 text-xs uppercase tracking-widest mt-4">
               <MapPin className="w-4 h-4 animate-pulse" /> Servidor_Base: Buenos Aires, AR
             </div>
