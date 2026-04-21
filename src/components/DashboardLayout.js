@@ -85,7 +85,7 @@ const DashboardLayout = ({ children }) => {
         {/* 🕸️ Fondo de cuadrícula holográfica */}
         <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(0,255,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,0,0.03)_1px,transparent_1px)] bg-[size:20px_20px]"></div>
 
-        <header className="p-8 border-b border-green-500/30 bg-black/90 backdrop-blur-sm sticky top-0 z-10 flex justify-between items-center shadow-[0_4px_24px_rgba(0,255,0,0.05)] relative">
+        <header className="p-8 border-b border-green-500/30 bg-black/90 backdrop-blur-sm sticky top-0 z-10 flex justify-between items-center shadow-[0_4px_24px_rgba(0,255,0,0.05)]">
             <h2 className="text-3xl font-bold tracking-widest text-green-400 drop-shadow-[0_0_8px_rgba(0,255,0,0.3)] uppercase">
               &gt; Consola_de_Mando
             </h2>
