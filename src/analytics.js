@@ -12,3 +12,4 @@ export const sendPulse = (path) => {
   ReactGA.send({ hitType: 'pageview', page: path });
 
 };
+
