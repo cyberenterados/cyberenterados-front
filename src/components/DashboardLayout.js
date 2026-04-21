@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { LayoutDashboard, FileText, PlusCircle, LogOut, Terminal, ShieldAlert } from 'lucide-react'; 
+// 🛠️ CIRUGÍA 1: Importamos el icono Wrench (Herramienta) para el Nodo SIGINT
+import { LayoutDashboard, FileText, PlusCircle, LogOut, Terminal, ShieldAlert, Wrench } from 'lucide-react'; 
 
 const DashboardLayout = ({ children }) => {
   const navigate = useNavigate();
@@ -44,6 +45,17 @@ const DashboardLayout = ({ children }) => {
               <span className="font-medium tracking-widest uppercase text-sm">{item.name}</span>
             </Link>
           ))}
+
+          {/* 🛠️ CIRUGÍA 2: Inyección de Enlace Externo al Nodo de Inteligencia */}
+          <a
+            href="https://fuentes-noticias-proyect.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-4 px-4 py-3 rounded text-green-600 hover:bg-green-900/30 hover:text-green-300 transition-all duration-200 active:scale-95 group border border-transparent hover:border-green-500/30"
+          >
+            <Wrench className="w-6 h-6 text-green-700 group-hover:text-green-400 transition-colors" />
+            <span className="font-medium tracking-widest uppercase text-sm">Nodo SIGINT</span>
+          </a>
         </nav>
 
         {/* Sección de Usuario y Logout */}
