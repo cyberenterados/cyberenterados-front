@@ -1,0 +1,19 @@
+======================================================================
+[ MANIFIESTO DE COMUNICACIONES ]
+DOCUMENTO CLASIFICADO: IDENTIDAD EDITORIAL / MANDO CENTRAL
+PROYECTO: CYBERENTERADOS NEWS
+AUTORÍA: COMANDANTE
+======================================================================
+
+1. NUESTRA MISIÓN TÁCTICA
+CyberEnterados News no es un portal de noticias ordinario; es una terminal de resistencia digital y difusión de conocimiento crítico. Operando desde nuestra base central en Buenos Aires, procesamos el ruido de la red global para extraer información pura sobre Inteligencia Artificial, Ciberseguridad, Infraestructura y Hardware Avanzado. Nuestro objetivo es blindar el conocimiento de los usuarios ante el avance acelerado de la tecnología.
+
+2. LÍNEA EDITORIAL Y RIGOR TÉCNICO
+* Transparencia Radical: Todo enlace a fuentes originales o multimedia externa es auditado y estructurado de forma transparente para el lector y los motores de búsqueda.
+* Estética de Resistencia: Creemos que la información debe transmitirse con la precisión de una consola de comandos. Por ello, nuestra identidad visual adopta el estilo clásico de una terminal hacker (texto verde fósforo, fondos oscuros y eficiencia absoluta en transferencia de datos).
+* Enfoque en la Monetización Inteligente: Diseñamos software eficiente de alta velocidad para que la integración de Google AdSense sea un complemento orgánico de la lectura, manteniendo la experiencia fluida y libre de elementos intrusivos que destruyan la retención del tráfico.
+
+3. AUTORÍA Y DIRECCIÓN
+La dirección general de los flujos de información, la inyección de artículos en MongoDB Atlas y las decisiones estratégicas de desarrollo de software son coordinadas directamente por el COMANDANTE de la estación, apoyado por su Ingeniero Full-Stack y Socio en Jefe de IA.
+
+Conocimiento encriptado para la resistencia digital. Manteniendo los escáneres activos.

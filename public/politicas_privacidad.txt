@@ -1,0 +1,23 @@
+======================================================================
+[ CONTROL DE TRÁFICO Y ACCESO ]
+DOCUMENTO CLASIFICADO: POLÍTICA DE PRIVACIDAD
+PROYECTO: CYBERENTERADOS NEWS
+UBICACIÓN DE OPERACIONES: BUENOS AIRES, ARGENTINA
+======================================================================
+
+1. DEFENSA Y PROTECCIÓN DE DATOS
+En CyberEnterados News, la privacidad de nuestros terminales y de los lectores que acceden a la red es un protocolo de máxima prioridad. Este búnker informativo no recopila, almacena ni comercializa información de identificación personal (PII) de los usuarios que navegan de manera regular por el portal interactivo.
+
+2. PROTOCOLO DE MONETIZACIÓN (GOOGLE ADSENSE Y COOKIES)
+Para sostener la infraestructura de comunicaciones y la generación de ingresos legítimos, este sitio web utiliza sistemas de publicidad digital, específicamente Google AdSense y sus redes de socios estratégicos:
+* El proveedor externo Google utiliza cookies para publicar anuncios basados en las visitas anteriores de un usuario a este sitio web o a otros sitios de Internet.
+* El uso de cookies de publicidad (como la cookie de DoubleClick) permite a Google y a sus socios mostrar anuncios a nuestros lectores basados en su comportamiento de navegación en la red de manera totalmente anónima.
+* Los usuarios e integrantes de la red civil pueden optar por desactivar la publicidad personalizada. Para revocar estos permisos y configurar su privacidad, deben acceder a: https://www.google.com/settings/ads
+
+3. HERRAMIENTAS DE TELEMETRÍA (GOOGLE ANALYTICS)
+El búnker utiliza Google Analytics para analizar el tráfico global, los tiempos de carga de nuestros componentes (Ada y Marie) y la efectividad de la red. Todos los datos analizados son estadísticos, disociados y de carácter estrictamente técnico.
+
+4. CUMPLIMIENTO LEGAL DE ADSENSE Y REFERRALS
+Nuestros reproductores de contenido multimedia (incluyendo integraciones externas como YouTube e iframes tácticos) cumplen estrictamente con las directivas de seguridad de origen ('strict-origin-when-cross-origin') para proteger el canal de flujos de tráfico inválido o penalizaciones.
+
+Para consultas técnicas o reportes de errores en los sistemas de datos, la red de comunicación oficial está disponible en nuestros canales de difusión indexados.

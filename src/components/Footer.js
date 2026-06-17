@@ -17,7 +17,7 @@ const Footer = () => {
               </span>
             </div>
             <p className="text-green-600/80 text-sm leading-relaxed">
-              🌐 Bienvenidos a CyberEnterados News 📰✨ Tu fuente de información para lo más comentado y asombroso del mundo digital y nuestra actualidad. 🚀 Desde tecnología hasta cultura, ¡cubriendo todo lo que necesitas saber para estar al día! 🌟
+              🌐 Bienvenidos a CyberEnterados News 📰 Tu fuente de información para lo más comentado y asombroso del mundo digital y nuestra actualidad. 
             </p>
           </div>
 
@@ -40,6 +40,33 @@ const Footer = () => {
                   className="hover:text-green-400 transition-colors font-bold"
                 >
                   &gt;_ EXPEDIENTE_REDACTOR
+                </a>
+              </li>
+              {/* 🛡️ SUB-NODOS LEGALES (ADSENSE COMPLIANCE) */}
+              <li className="pt-2 flex flex-col gap-1.5 ml-4 border-l border-green-900/50 pl-3">
+                <a 
+                  href="/politicas_privacidad.txt" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="text-xs text-green-700 hover:text-green-400 transition-colors before:content-['>_']"
+                >
+                  {' '}Protocolos_de_Privacidad
+                </a>
+                <a 
+                  href="/terminos_uso.txt" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="text-xs text-green-700 hover:text-green-400 transition-colors before:content-['>_']"
+                >
+                  {' '}Términos_de_Operación
+                </a>
+                <a 
+                  href="/identidad_editorial.txt" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="text-xs text-green-700 hover:text-green-400 transition-colors before:content-['>_']"
+                >
+                  {' '}Identidad_Central
                 </a>
               </li>
             </ul>
@@ -75,14 +102,6 @@ const Footer = () => {
                 <Film className="w-5 h-5" />
               </a>
 
-              {/* 🚀 [ PUERTO DE EXPANSIÓN RESERVADO ] 
-                  Descomentar el siguiente bloque para inyectar una nueva red en el futuro:
-              */}
-              {/* <a href="URL_NUEVA_RED" target="_blank" rel="noopener noreferrer" className="p-2 bg-green-950/30 rounded border border-green-900 hover:border-green-400 hover:text-green-400 transition-all shadow-[0_0_0_rgba(0,255,0,0)] hover:shadow-[0_0_10px_rgba(0,255,0,0.2)]" title="Nueva Red Táctica">
-                <Terminal className="w-5 h-5" />
-              </a> 
-              */}
-
             </div>
             
             {/* Telemetría Falsa (Ubicación real) */}
@@ -97,7 +116,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center text-green-700 text-xs uppercase tracking-widest">
           <p>&copy; {new Date().getFullYear()} CyberEnterados News. Todos los derechos reservados.</p>
           <p className="mt-2 md:mt-0 flex items-center gap-2">
-            Sistema Operativo por <span className="text-green-500 font-bold">Comandante & Bot</span>
+            Sistema Operativo por <span className="text-green-500 font-bold">ManuExplora</span>
           </p>
         </div>
       </div>

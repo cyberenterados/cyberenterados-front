@@ -1,0 +1,20 @@
+======================================================================
+[ PROTOCOLO DE INTERCONEXIÓN ]
+DOCUMENTO CLASIFICADO: TÉRMINOS Y CONDICIONES DE USO
+PROYECTO: CYBERENTERADOS NEWS
+SISTEMA CENTRAL: COMPILACIÓN 2026
+======================================================================
+
+1. ACEPTACIÓN DEL PLANO ESTRUCTURAL
+Al ingresar, escanear o consumir los datos distribuidos en el portal de CyberEnterados News (https://cyberenterados-front.vercel.app o dominios oficiales vinculados), el usuario acepta de manera inequívoca y obligatoria los presentes Términos de Uso. Si usted no está de acuerdo con el monitoreo estadístico o los sistemas de anuncios automatizados, se le solicita desconectar su terminal de la interfaz.
+
+2. PROPIEDAD INTELECTUAL Y CONOCIMIENTO ENCRIPTADO
+Todo el código de desarrollo de la interfaz (Ada Front), la lógica del servidor de base de datos de Atlas (Marie Back), los logotipos con efecto glitch y el contenido de las noticias publicadas pertenecen exclusivamente al Mando Central de CyberEnterados. Queda estrictamente prohibido el uso indebido de los scripts para clonación de bases de datos sin autorización explícita.
+
+3. USO DE REDES MULTIMEDIA Y ENLACES
+El portal integra accesos y reproducciones directas de plataformas externas (como YouTube y feeds RSS automatizados). El usuario se compromete a no explotar estas conexiones mediante scripts maliciosos, bots de clics masivos automatizados o inyecciones de código que comprometan la monetización legítima del ecosistema.
+
+4. EXCLUSIÓN DE RESPONSABILIDAD
+CyberEnterados News provee información sobre tecnología, ciberseguridad e inteligencia artificial con fines puramente informativos y de entretenimiento digital. No nos hacemos responsables de las decisiones de configuración de hardware, inversiones en activos tecnológicos o modificaciones de red que realicen los civiles basándose en los reportes del sitio.
+
+Cualquier vulneración detectada por nuestro cortafuegos perimetral (whitelist de CORS) resultará en el bloqueo permanente de la dirección IP de origen.
