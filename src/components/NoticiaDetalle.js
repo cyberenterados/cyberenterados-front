@@ -108,7 +108,7 @@ const NoticiaDetalle = () => {
                 </span>
                 {/* 🚀 CIRUGÍA: Autoría y marca personal asignada correctamente al Mando del Proyecto */}
                 <span className="flex items-center gap-2 border-l border-green-500/30 pl-3 md:pl-4">
-                  <User className="w-4 h-4" /> ING. DANIEL GARCIA
+                  <User className="w-4 h-4" /> ManuExplora
                 </span>
               </div>
 
