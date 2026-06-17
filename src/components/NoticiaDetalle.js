@@ -15,9 +15,9 @@ const NoticiaDetalle = () => {
   useEffect(() => {
     const buscarNoticia = async () => {
       try {
-        const respuesta = await axios.get('https://cyberenteradosnews.onrender.com/api/noticias');
-        const noticiaEncontrada = respuesta.data.find(n => n._id === id);
-        setNoticia(noticiaEncontrada);
+        // 🚀 CIRUGÍA TÁCTICA: Petición directa a Marie por ID. Ahorro masivo de telemetría y RAM.
+        const respuesta = await axios.get(`https://cyberenteradosnews.onrender.com/api/noticias/${id}`);
+        setNoticia(respuesta.data);
         setCargando(false);
       } catch (error) {
         console.error("❌ Falla en la descarga del artículo:", error);
@@ -106,8 +106,9 @@ const NoticiaDetalle = () => {
                 <span className="flex items-center gap-2">
                   <Clock className="w-4 h-4" /> <time dateTime={noticia.fecha}>{new Date(noticia.fecha).toLocaleDateString()}</time>
                 </span>
+                {/* 🚀 CIRUGÍA: Autoría y marca personal asignada correctamente al Mando del Proyecto */}
                 <span className="flex items-center gap-2 border-l border-green-500/30 pl-3 md:pl-4">
-                  <User className="w-4 h-4" /> COMANDANTE
+                  <User className="w-4 h-4" /> ING. DANIEL GARCIA
                 </span>
               </div>
 
@@ -167,7 +168,9 @@ const NoticiaDetalle = () => {
                      src={`https://www.youtube.com/embed/${getYouTubeId(noticia.multimediaUrl)}`} 
                      title="YouTube video player" 
                      frameBorder="0" 
-                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                     /* 🚀 CIRUGÍA: Políticas de privacidad de Google inyectadas para monetización */
+                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                     referrerPolicy="strict-origin-when-cross-origin"
                      allowFullScreen
                    ></iframe>
                  </div>
