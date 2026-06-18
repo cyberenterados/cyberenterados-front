@@ -66,8 +66,8 @@ const NoticiaDetalle = () => {
         image={noticia.imagenUrl}
         type="article"
         url={window.location.href}
+        fecha={noticia.fecha} /* <-- ⏱️ NUEVO PARAMETRO DE RELOJ INYECTADO */
       />
-
       <article className="bg-gray-900 min-h-screen pt-8 pb-24 w-full overflow-x-clip font-mono selection:bg-green-500/30">      
         <div className="max-w-[1500px] mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 px-4 sm:px-6 md:px-8">
           
